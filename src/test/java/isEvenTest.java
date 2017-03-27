@@ -19,6 +19,7 @@ public class isEvenTest {
         softAssert.assertEquals(false, copy.incorrectCheck(7), "incorrectCheckMethod: Odd number isn't recognized");
         softAssert.assertEquals(true, copy.incorrectCheck(0), "incorrectCheckMethod: Zero isn't recognized");
         softAssert.assertAll()
+
         /*Assert.assertEquals(true, copy.check(-956));
         Assert.assertEquals(false, copy.check(-507));
         Assert.assertEquals(true, copy.check1(998));
