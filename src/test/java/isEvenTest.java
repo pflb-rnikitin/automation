@@ -1,28 +1,55 @@
-import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
+import org.hamcrest.MatcherAssert;
+import static org.hamcrest.core.Is.is;
 
 public class isEvenTest {
     private SoftAssert softAssert = new SoftAssert();
-    private isEven copy = new isEven();
+    private isEven sut = new isEven();
 
-    @Test
-    public void testCheckIsEven() throws Exception {
-        softAssert.assertEquals(true, copy.check(-990), "checkMethod: Even number isn't recognized");
-        softAssert.assertEquals(false, copy.check(501), "checkMethod: Odd number isn't recognized");
-        softAssert.assertEquals(true, copy.check(0), "checkMethod: Zero isn't recognized");
-        softAssert.assertEquals(true, copy.check1(-500), "check1Method: Even number isn't recognized");
-        softAssert.assertEquals(false, copy.check1(441), "check1Method: Odd number isn't recognized");
-        softAssert.assertEquals(true, copy.check1(0), "check1Method: Zero isn't recognized");
-        softAssert.assertEquals(true, copy.incorrectCheck(-500), "incorrectCheckMethod: Even number isn't recognized");
-        softAssert.assertEquals(false, copy.incorrectCheck(7), "incorrectCheckMethod: Odd number isn't recognized");
-        softAssert.assertEquals(true, copy.incorrectCheck(0), "incorrectCheckMethod: Zero isn't recognized");
-        softAssert.assertAll()
 
-        /*Assert.assertEquals(true, copy.check(-956));
-        Assert.assertEquals(false, copy.check(-507));
-        Assert.assertEquals(true, copy.check1(998));
-        Assert.assertEquals(false, copy.check1(-503))*/;
+    @DataProvider (name="TestData")
+    public Object[][] getData () {
+        return new Object[][]{
+                new Object[]{41},
+                new Object[]{234},
+                new Object[]{-23543},
+                new Object[]{0},
+                new Object[]{9999999},
+                new Object[]{41},
+                new Object[]{41},
+                new Object[]{41},
+                new Object[]{41},
+                new Object[]{41},
+                new Object[]{41}
+        };
+    }
+        /*Object[][]data = new Object[10][0];
+        data [0][0] = 1;
+        data [1][0] = 5;
+        data [2][0] = 500;
+        data [3][0] = 6312;
+        data [4][0] = -4326;
+        data [5][0] = 234732;
+        data [6][0] = 0;
+        data [7][0] = 234;
+        data [8][0] = 242;
+        data [9][0] = 4;
+        data [10][0] = 4;
+        return data;*/
+
+
+    @Test (dataProvider = "TestData")
+    public void testCheckIsEven(int m) throws Exception {
+        MatcherAssert.assertThat(sut.check(m), is(true));
+        System.out.println(m);
+        MatcherAssert.assertThat(sut.check(m), is(true));
+        /*MatcherAssert.assertThat(sut.check1(5), is(false));
+        MatcherAssert.assertThat(sut.check1(-900), is(true));
+        MatcherAssert.assertThat(sut.check1(0), is(true));
+        MatcherAssert.assertThat(sut.incorrectCheck(5), is(false));
+        MatcherAssert.assertThat(sut.incorrectCheck(-900), is(true));
+        MatcherAssert.assertThat(sut.incorrectCheck(0), is(true));*/
     }
 }
