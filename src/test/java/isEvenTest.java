@@ -32,6 +32,5 @@ public class isEvenTest {
     @Test (dataProvider = "TestData")
     public void testCheckIsEven(int m, boolean b) throws Exception {
         MatcherAssert.assertThat(sut.check(m), is(b));
-        System.out.println(m);
     }
 }
