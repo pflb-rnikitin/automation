@@ -1,13 +1,20 @@
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import org.hamcrest.MatcherAssert;
 import static org.hamcrest.core.Is.is;
 
 public class isEvenTest {
     private SoftAssert softAssert = new SoftAssert();
-    private isEven sut = new isEven();
-    
+    private isEven sut;
+
+    @BeforeMethod
+    private void isEven (){
+        sut = new isEven();
+    }
+
+
     @DataProvider (name="TestData")
     public Object[][] getData () {
         Object [][] data = new Object[5][2];
