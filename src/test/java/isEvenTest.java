@@ -7,8 +7,7 @@ import static org.hamcrest.core.Is.is;
 public class isEvenTest {
     private SoftAssert softAssert = new SoftAssert();
     private isEven sut = new isEven();
-
-
+    
     @DataProvider (name="TestData")
     public Object[][] getData () {
         Object [][] data = new Object[5][2];
