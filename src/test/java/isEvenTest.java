@@ -30,7 +30,7 @@ public class isEvenTest {
                 data[3][0]=-101;
                 data[3][1]=true;
 
-                data[4][0]=423432131;
+                data[4][0]=4234323444431L;
                 data[4][1]=true;
         return data;
     }
